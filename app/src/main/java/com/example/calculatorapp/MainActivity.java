@@ -1,0 +1,223 @@
+package com.example.calculatorapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    Button btnAddition;
+    Button btnSubtraction;
+    Button btnDivision;
+    Button btnMultiply;
+    Button btnRoot;
+    Button btnPercentage;
+    Button btnPythagorasValue;
+    Button btnCircleArea;
+    Button btnVolume;
+    Button btnCalculateArea;
+
+    Button btnClear;
+    Button btnCalculateRoot;
+
+    TextView tvResult;
+    EditText edtValue1;
+    EditText edtValue2;
+
+    TextView tvMessage;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        tvResult=findViewById(R.id.tvResult);
+        edtValue1=findViewById(R.id.edtValue1);
+        edtValue2=findViewById(R.id.edtValue2);
+        tvMessage=findViewById(R.id.tvMessage);
+
+     /////////initialize all buttons///////////////////
+
+        btnAddition=findViewById(R.id.btnAddition);
+        btnSubtraction=findViewById(R.id.btnSubtraction);
+        btnMultiply=findViewById(R.id.btnMultiplication);
+        btnDivision=findViewById(R.id.btnDivision);
+        btnRoot=findViewById(R.id.btnRoot);
+        btnPercentage=findViewById(R.id.btnPercentage);
+        btnPythagorasValue=findViewById(R.id.btnPythagorasValue);
+        btnCircleArea=findViewById(R.id.btnCircleArea);
+        btnVolume=findViewById(R.id.btnCylinderVolume);
+        btnCalculateArea=findViewById(R.id.btnCalculateArea);
+        btnCalculateRoot=findViewById(R.id.btnCalculateRoot);
+        btnClear=findViewById(R.id.btnClear);
+
+
+        String message = "Please Enter only 1 value in 1st field";
+        SpannableString spannableMessage = new SpannableString(message);
+
+
+        btnClear.setOnClickListener(v -> {
+            tvResult.setText("0");
+            btnCalculateArea.setVisibility(View.GONE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            edtValue1.setText("");
+            edtValue2.setText("");
+            tvMessage.setText(R.string.tvMessage);
+
+        });
+
+        //////Calculating Sum//////////
+        btnAddition.setOnClickListener(v -> {
+            calculate("+");
+            btnCalculateArea.setVisibility(View.GONE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            tvMessage.setText(R.string.tvMessage);
+        });
+
+        //////Calculating Subtract//////////
+        btnSubtraction.setOnClickListener(v -> {
+            calculate("-");
+            btnCalculateArea.setVisibility(View.GONE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            tvMessage.setText(R.string.tvMessage);
+        });
+
+        //////Calculating Division//////////
+        btnDivision.setOnClickListener(v -> {
+            calculate("/");
+            btnCalculateArea.setVisibility(View.GONE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            tvMessage.setText(R.string.tvMessage);
+
+        });
+
+        //////Calculating Multiplication//////////
+        btnMultiply.setOnClickListener(v -> {
+            calculate("*");
+            btnCalculateArea.setVisibility(View.GONE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            tvMessage.setText(R.string.tvMessage);
+
+        });
+        //////Calculating Percentage//////////
+        btnPercentage.setOnClickListener(v -> {
+            percentage();
+            btnCalculateArea.setVisibility(View.GONE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            tvMessage.setText(R.string.tvMessage);
+
+        });
+
+
+        btnRoot.setOnClickListener(v -> {
+            btnCalculateRoot.setVisibility(View.VISIBLE);
+            spannableMessage.setSpan(new ForegroundColorSpan(Color.RED), 0, message.length(), 0);
+            btnCalculateArea.setVisibility(View.GONE);
+            tvMessage.setText(spannableMessage);
+
+
+        });
+
+        //////Calculating SqrRoot//////////
+        btnCalculateRoot.setOnClickListener(v -> {
+            root();
+            edtValue2.setText("");
+            tvMessage.setText(R.string.tvMessage);
+
+        });
+
+        btnCircleArea.setOnClickListener(v -> {
+            spannableMessage.setSpan(new ForegroundColorSpan(Color.RED), 0, message.length(), 0);
+            btnCalculateArea.setVisibility(View.VISIBLE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            tvMessage.setText(spannableMessage);
+        });
+
+        //////Calculating Circle Area//////////
+        btnCalculateArea.setOnClickListener(v -> {
+            circleArea();
+            edtValue2.setText("");
+            tvMessage.setText(R.string.tvMessage);
+        });
+
+        //////Calculating Cylinder Volume//////////
+        btnVolume.setOnClickListener(v -> {
+            cylinderVolume();
+            btnCalculateArea.setVisibility(View.GONE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            tvMessage.setText(R.string.tvMessage);
+
+        });
+
+        //////Calculating Pythagoras Value//////////
+        btnPythagorasValue.setOnClickListener(v -> {
+            PythagorasValue();
+            btnCalculateArea.setVisibility(View.GONE);
+            btnCalculateRoot.setVisibility(View.GONE);
+            tvMessage.setText(R.string.tvMessage);
+
+        });
+
+
+    }
+
+
+    ////// Method to calculate sum,subtract,division and multiplication////////////
+    @SuppressLint("SetTextI18n")
+    private void calculate(String operators){
+
+        String v1=edtValue1.getText().toString();
+        String v2=edtValue2.getText().toString();
+        if (v1.isEmpty() || v2.isEmpty()){
+            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try {
+            double value1=Double.parseDouble(v1);
+            double value2=Double.parseDouble(v2);
+            double result=0.0;
+
+            switch (operators){
+                case "+":
+                    result=value1+value2;
+                    break;
+                case "-":
+                    result=value1-value2;
+                    break;
+                case "/":
+                    if (value2 !=0){
+                        result=value1/value2;
+                    }
+                    else {
+                        tvResult.setText("Cannot divided by zero");
+                        return;
+                    }
+                    break;
+                case "*":
+                    result=value1*value2;
+                    break;
+
+            }
+
+            tvResult.setText(String.valueOf(result));
+        }catch (NumberFormatException e){
+            tvResult.setText("Invalid Input");
+
+
+        }
+
+    }
+
+    
+
+}

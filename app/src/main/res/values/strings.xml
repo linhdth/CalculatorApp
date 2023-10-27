@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Calculator App</string>
+    <string name="value_1_or_radius">Value 1 , radius , whole</string>
+    <string name="value_2_or_height">Value 2 , height , part</string>
+    <string name="cylinder_volume">Cylinder Volume</string>
+    <string name="circle_area">Circle Area</string>
+    <string name="pythagoras_value">Pythagoras Value</string>
+    <string name="percentage">Percentage</string>
+    <string name="square_root">Square Root</string>
+    <string name="multiply">Multiply</string>
+    <string name="division">Division</string>
+    <string name="subtraction">Subtraction</string>
+    <string name="addition">Addition</string>
+    <string name="tvMessage">Please enter the required values and perform the following operations</string>
+</resources>
