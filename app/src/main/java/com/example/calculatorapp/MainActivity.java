@@ -170,6 +170,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void PythagorasValue() {
+        String value1=edtValue1.getText().toString();//////getting value 1
+        String value2=edtValue2.getText().toString();//////getting value 2
+
+        if (value1.isEmpty() ||  value2.isEmpty()){
+            //////if any field is missing
+            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+
+            ///converting into double
+            double a=Double.parseDouble(value1);///converting into double
+            double b=Double.parseDouble(value2);
+
+            double c=Math.sqrt(aa + bb); ////formula to calculate pathagorus Value
+
+            tvResult.setText(String.valueOf(c));/////set Result to tvResult
+
+        }catch (NumberFormatException e){
+            tvResult.setText("Invalid Input");
+        }
+    }
+
 
     ////// Method to calculate sum,subtract,division and multiplication////////////
     @SuppressLint("SetTextI18n")
