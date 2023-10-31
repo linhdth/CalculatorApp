@@ -170,6 +170,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void cylinderVolume() {
+        String radius=edtValue1.getText().toString();///////getting radius in string
+        String height=edtValue2.getText().toString();///////getting height in string
+
+        if (radius.isEmpty() ||  height.isEmpty()){
+            ////any filed is empty
+            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+
+            double r=Double.parseDouble(radius);////converting radius into double
+            double h=Double.parseDouble(height);////converting height into double
+
+            double volume=Math.PI * Math.pow(r,2) * h; ////formula to calculate volume
+
+            tvResult.setText(String.valueOf(volume)); ////set result into tvResult
+
+        }catch (NumberFormatException e){
+
+            tvResult.setText("Invalid Input");
+
+        }
+    }
+
     private void PythagorasValue() {
         String value1=edtValue1.getText().toString();//////getting value 1
         String value2=edtValue2.getText().toString();//////getting value 2
