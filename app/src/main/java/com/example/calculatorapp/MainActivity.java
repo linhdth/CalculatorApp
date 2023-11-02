@@ -170,6 +170,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void root() {
+        String v=edtValue1.getText().toString();/////getting edittext1 value in string
+        if (v.isEmpty()){
+            ///////If edit text have missing value//////////
+            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            /////converting the edit texts values into double for further calculations/////////////
+            double number=Double.parseDouble(v);/////converting the edit texts values into double for further calculation
+            double sqRoot=Math.sqrt(number);////Formula to calculate squareRoot
+
+            tvResult.setText(String.valueOf(sqRoot));/////Setting respective result in tvResult textView
+
+
+        }catch (NumberFormatException e){
+            tvResult.setText("Invalid Input");
+
+        }
+    }
+
     private void circleArea() {
         String radius=edtValue1.getText().toString();//////getting radius in string
         if (radius.isEmpty()){
