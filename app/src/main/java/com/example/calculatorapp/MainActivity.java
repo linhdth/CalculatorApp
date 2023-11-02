@@ -170,6 +170,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void percentage() {
+        String part=edtValue1.getText().toString();/////getting edittext1 value in string
+        String whole=edtValue2.getText().toString();/////getting edittext2 value in string
+        if (part.isEmpty() || whole.isEmpty()){
+            ///////If any edit text have missing value//////////
+            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            /////converting the edit texts values into double for further calculations/////////////
+            double p = Double.parseDouble(part);
+            double w = Double.parseDouble(whole);
+
+            double percentage=(p/w)*100;/////Formula to calculate percentage
+
+            tvResult.setText(percentage + "%");//////Setting respective result in tvResult textView
+
+        }
+        catch (NumberFormatException e){
+            tvResult.setText("Invalid Input");///////Any Exception
+
+
+        }
+    }
+
     private void root() {
         String v=edtValue1.getText().toString();/////getting edittext1 value in string
         if (v.isEmpty()){
