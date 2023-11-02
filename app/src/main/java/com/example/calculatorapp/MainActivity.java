@@ -170,6 +170,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void circleArea() {
+        String radius=edtValue1.getText().toString();//////getting radius in string
+        if (radius.isEmpty()){
+            ////if field is empty///
+            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            double r=Double.parseDouble(radius);////converting string into double
+            double getArea=Math.PI * Math.pow(r,2);/////formula to calculate area
+
+            tvResult.setText(String.valueOf(getArea));////set result to tvResult
+
+        }catch (NumberFormatException e){
+            tvResult.setText("Invalid Input");
+        }
+    }
+
     private void cylinderVolume() {
         String radius=edtValue1.getText().toString();///////getting radius in string
         String height=edtValue2.getText().toString();///////getting height in string
