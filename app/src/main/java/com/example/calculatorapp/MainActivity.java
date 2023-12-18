@@ -1,4 +1,4 @@
-package com.example.calculatorapp;
+package com.example.calculatorapp; //version 2.0
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         });
         //////Calculating Percentage//////////
         btnPercentage.setOnClickListener(v -> {
-            percentage();
+            Percentage();
             btnCalculateArea.setVisibility(View.GONE);
             btnCalculateRoot.setVisibility(View.GONE);
             tvMessage.setText(R.string.tvMessage);
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         //////Calculating SqrRoot//////////
         btnCalculateRoot.setOnClickListener(v -> {
-            root();
+            Root();
             edtValue2.setText("");
             tvMessage.setText(R.string.tvMessage);
 
@@ -144,14 +144,14 @@ public class MainActivity extends AppCompatActivity {
 
         //////Calculating Circle Area//////////
         btnCalculateArea.setOnClickListener(v -> {
-            circleArea();
+            CircleArea();
             edtValue2.setText("");
             tvMessage.setText(R.string.tvMessage);
         });
 
         //////Calculating Cylinder Volume//////////
         btnVolume.setOnClickListener(v -> {
-            cylinderVolume();
+            CylinderVolume();
             btnCalculateArea.setVisibility(View.GONE);
             btnCalculateRoot.setVisibility(View.GONE);
             tvMessage.setText(R.string.tvMessage);
@@ -170,32 +170,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void percentage() {
-        String part=edtValue1.getText().toString();/////getting edittext1 value in string
-        String whole=edtValue2.getText().toString();/////getting edittext2 value in string
-        if (part.isEmpty() || whole.isEmpty()){
-            ///////If any edit text have missing value//////////
-            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-            /////converting the edit texts values into double for further calculations/////////////
-            double p = Double.parseDouble(part);
-            double w = Double.parseDouble(whole);
+  // I took away the old code and will replace it with the new one
+  private void Percentage() {
+      String part=edtValue1.getText().toString();/////getting edittext1 value in string
+      String whole=edtValue2.getText().toString();/////getting edittext2 value in string
+      if (part.isEmpty() || whole.isEmpty()){
+          ///////If any edit text have missing value//////////
+          Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
+          return;
+      }
+      try {
+          /////converting the edit texts values into double for further calculations/////////////
+          double p = Double.parseDouble(part);
+          double w = Double.parseDouble(whole);
 
-            double percentage=(p/w)*100;/////Formula to calculate percentage
+          double percentage=(p/w)*100;/////Formula to calculate percentage
 
-            tvResult.setText(percentage + "%");//////Setting respective result in tvResult textView
+          tvResult.setText(percentage + "%");//////Setting respective result in tvResult textView
 
-        }
-        catch (NumberFormatException e){
-            tvResult.setText("Invalid Input");///////Any Exception
+      }
+      catch (NumberFormatException e){
+          tvResult.setText("Invalid Input");///////Any Exception
 
 
-        }
-    }
+      }
+  }
 
-    private void root() {
+    private void Root() {
         String v=edtValue1.getText().toString();/////getting edittext1 value in string
         if (v.isEmpty()){
             ///////If edit text have missing value//////////
@@ -216,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void circleArea() {
+    private void CircleArea() {
         String radius=edtValue1.getText().toString();//////getting radius in string
         if (radius.isEmpty()){
             ////if field is empty///
@@ -234,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void cylinderVolume() {
+    private void CylinderVolume() {
         String radius=edtValue1.getText().toString();///////getting radius in string
         String height=edtValue2.getText().toString();///////getting height in string
 
@@ -274,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
             double a=Double.parseDouble(value1);///converting into double
             double b=Double.parseDouble(value2);
 
-            double c=Math.sqrt(aa + bb); ////formula to calculate pathagorus Value
+            double c=Math.sqrt(a*a + b*b); ////formula to calculate pathagorus Value
 
             tvResult.setText(String.valueOf(c));/////set Result to tvResult
 
@@ -328,127 +329,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    ///////////////Calculate Percentage////////////////
-    private void percentage(){
-        String part=edtValue1.getText().toString();/////getting edittext1 value in string
-        String whole=edtValue2.getText().toString();/////getting edittext2 value in string
-        if (part.isEmpty() || whole.isEmpty()){
-            ///////If any edit text have missing value//////////
-            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-            /////converting the edit texts values into double for further calculations/////////////
-            double p = Double.parseDouble(part);
-            double w = Double.parseDouble(whole);
 
-            double percentage=(p/w)*100;/////Formula to calculate percentage
-
-            tvResult.setText(percentage + "%");//////Setting respective result in tvResult textView
-
-        }
-        catch (NumberFormatException e){
-            tvResult.setText("Invalid Input");///////Any Exception
-
-
-        }
-    }
-    ///////////////Calculate Square Root////////////////
-    private void root(){
-        String v=edtValue1.getText().toString();/////getting edittext1 value in string
-        if (v.isEmpty()){
-            ///////If edit text have missing value//////////
-            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-            /////converting the edit texts values into double for further calculations/////////////
-            double number=Double.parseDouble(v);/////converting the edit texts values into double for further calculation
-            double sqRoot=Math.sqrt(number);////Formula to calculate squareRoot
-
-            tvResult.setText(String.valueOf(sqRoot));/////Setting respective result in tvResult textView
-
-
-        }catch (NumberFormatException e){
-            tvResult.setText("Invalid Input");
-
-        }
-    }
-
-
-    ///////////////Calculate Circle Area////////////////
-    private void circleArea(){
-        String radius=edtValue1.getText().toString();//////getting radius in string
-        if (radius.isEmpty()){
-            ////if field is empty///
-            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-            double r=Double.parseDouble(radius);////converting string into double
-            double getArea=Math.PI * Math.pow(r,2);/////formula to calculate area
-
-            tvResult.setText(String.valueOf(getArea));////set result to tvResult
-
-        }catch (NumberFormatException e){
-            tvResult.setText("Invalid Input");
-        }
-    }
-
-    ///////////////Calculate Cylinder Volume////////////////
-    private void cylinderVolume(){
-
-        String radius=edtValue1.getText().toString();///////getting radius in string
-        String height=edtValue2.getText().toString();///////getting height in string
-
-        if (radius.isEmpty() ||  height.isEmpty()){
-            ////any filed is empty
-            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-
-            double r=Double.parseDouble(radius);////converting radius into double
-            double h=Double.parseDouble(height);////converting height into double
-
-            double volume=Math.PI * Math.pow(r,2) * h; ////formula to calculate volume
-
-            tvResult.setText(String.valueOf(volume)); ////set result into tvResult
-
-        }catch (NumberFormatException e){
-
-            tvResult.setText("Invalid Input");
-
-        }
 
     }
 
 
-    ///////////////Calculate  PythagorasValue////////////////
-    private void PythagorasValue(){
-        String value1=edtValue1.getText().toString();//////getting value 1
-        String value2=edtValue2.getText().toString();//////getting value 2
-
-        if (value1.isEmpty() ||  value2.isEmpty()){
-            //////if any field is missing
-            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-
-            ///converting into double
-            double a=Double.parseDouble(value1);///converting into double
-            double b=Double.parseDouble(value2);
-
-            double c=Math.sqrt(a*a + b*b); ////formula to calculate pathagorus Value
-
-            tvResult.setText(String.valueOf(c));/////set Result to tvResult
-
-        }catch (NumberFormatException e){
-            tvResult.setText("Invalid Input");
-        }
-
-    }
 
 
-}
+
