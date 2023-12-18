@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         });
         //////Calculating Percentage//////////
         btnPercentage.setOnClickListener(v -> {
-            percentage();
+            Percentage();
             btnCalculateArea.setVisibility(View.GONE);
             btnCalculateRoot.setVisibility(View.GONE);
             tvMessage.setText(R.string.tvMessage);
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         //////Calculating SqrRoot//////////
         btnCalculateRoot.setOnClickListener(v -> {
-            root();
+            Root();
             edtValue2.setText("");
             tvMessage.setText(R.string.tvMessage);
 
@@ -144,14 +144,14 @@ public class MainActivity extends AppCompatActivity {
 
         //////Calculating Circle Area//////////
         btnCalculateArea.setOnClickListener(v -> {
-            circleArea();
+            CircleArea();
             edtValue2.setText("");
             tvMessage.setText(R.string.tvMessage);
         });
 
         //////Calculating Cylinder Volume//////////
         btnVolume.setOnClickListener(v -> {
-            cylinderVolume();
+            CylinderVolume();
             btnCalculateArea.setVisibility(View.GONE);
             btnCalculateRoot.setVisibility(View.GONE);
             tvMessage.setText(R.string.tvMessage);
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
   // I took away the old code and will replace it with the new one
-  private void percentage() {
+  private void Percentage() {
       String part=edtValue1.getText().toString();/////getting edittext1 value in string
       String whole=edtValue2.getText().toString();/////getting edittext2 value in string
       if (part.isEmpty() || whole.isEmpty()){
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
       }
   }
 
-    private void root() {
+    private void Root() {
         String v=edtValue1.getText().toString();/////getting edittext1 value in string
         if (v.isEmpty()){
             ///////If edit text have missing value//////////
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void circleArea() {
+    private void CircleArea() {
         String radius=edtValue1.getText().toString();//////getting radius in string
         if (radius.isEmpty()){
             ////if field is empty///
@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void cylinderVolume() {
+    private void CylinderVolume() {
         String radius=edtValue1.getText().toString();///////getting radius in string
         String height=edtValue2.getText().toString();///////getting height in string
 
@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
             double a=Double.parseDouble(value1);///converting into double
             double b=Double.parseDouble(value2);
 
-            double c=Math.sqrt(aa + bb); ////formula to calculate pathagorus Value
+            double c=Math.sqrt(a*a + b*b); ////formula to calculate pathagorus Value
 
             tvResult.setText(String.valueOf(c));/////set Result to tvResult
 
@@ -330,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     ///////////////Calculate Percentage////////////////
-    private void percentage(){
+   /* private void percentage(){
         String part=edtValue1.getText().toString();/////getting edittext1 value in string
         String whole=edtValue2.getText().toString();/////getting edittext2 value in string
         if (part.isEmpty() || whole.isEmpty()){
@@ -420,36 +420,11 @@ public class MainActivity extends AppCompatActivity {
 
             tvResult.setText("Invalid Input");
 
-        }
+        }*/
 
     }
 
 
-    ///////////////Calculate  PythagorasValue////////////////
-    private void PythagorasValue(){
-        String value1=edtValue1.getText().toString();//////getting value 1
-        String value2=edtValue2.getText().toString();//////getting value 2
-
-        if (value1.isEmpty() ||  value2.isEmpty()){
-            //////if any field is missing
-            Toast.makeText(MainActivity.this,"Fill All Fields",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        try {
-
-            ///converting into double
-            double a=Double.parseDouble(value1);///converting into double
-            double b=Double.parseDouble(value2);
-
-            double c=Math.sqrt(a*a + b*b); ////formula to calculate pathagorus Value
-
-            tvResult.setText(String.valueOf(c));/////set Result to tvResult
-
-        }catch (NumberFormatException e){
-            tvResult.setText("Invalid Input");
-        }
-
-    }
 
 
-}
+
