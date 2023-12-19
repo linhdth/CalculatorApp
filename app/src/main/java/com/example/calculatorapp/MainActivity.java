@@ -66,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        btnClear.setOnClickListener(v -> {
+                    tvResult.setText("0");
+                    btnCalculateArea.setVisibility(View.GONE);
+                    btnCalculateRoot.setVisibility(View.GONE);
+                    edtValue1.setText("");
+                    edtValue2.setText("");
+                    tvMessage.setText(R.string.tvMessage);
+                    });
 
         //////Calculating Sum//////////
         btnAddition.setOnClickListener(v -> {
