@@ -65,15 +65,15 @@ public class MainActivity extends AppCompatActivity {
         SpannableString spannableMessage = new SpannableString(message);
 
 
-        btnClear.setOnClickListener(v -> {
-            tvResult.setText("0");
-            btnCalculateArea.setVisibility(View.GONE);
-            btnCalculateRoot.setVisibility(View.GONE);
-            edtValue1.setText("");
-            edtValue2.setText("");
-            tvMessage.setText(R.string.tvMessage);
 
-        });
+        btnClear.setOnClickListener(v -> {
+                    tvResult.setText("0");
+                    btnCalculateArea.setVisibility(View.GONE);
+                    btnCalculateRoot.setVisibility(View.GONE);
+                    edtValue1.setText("");
+                    edtValue2.setText("");
+                    tvMessage.setText(R.string.tvMessage);
+                    });
 
         //////Calculating Sum//////////
         btnAddition.setOnClickListener(v -> {
@@ -159,13 +159,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //////Calculating Pythagoras Value//////////
-        btnPythagorasValue.setOnClickListener(v -> {
-            PythagorasValue();
-            btnCalculateArea.setVisibility(View.GONE);
-            btnCalculateRoot.setVisibility(View.GONE);
-            tvMessage.setText(R.string.tvMessage);
+        btnPythagorasValue.setOnClickListener(v ->
 
-        });
+    {
+        PythagorasValue();
+        btnCalculateArea.setVisibility(View.GONE);
+        btnCalculateRoot.setVisibility(View.GONE);
+        tvMessage.setText(R.string.tvMessage);
+
+    });
 
 
     }

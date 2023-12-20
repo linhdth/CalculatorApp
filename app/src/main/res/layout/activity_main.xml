@@ -37,27 +37,29 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1.5">
+
             <EditText
                 android:id="@+id/edtValue1"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
+                android:background="@drawable/edt_bg"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="@string/value_1_or_radius"
-                android:textSize="14sp"
                 android:inputType="numberDecimal"
                 android:paddingLeft="20dp"
-                android:background="@drawable/edt_bg"
-                android:fontFamily="@font/poppins_regular" />
+                android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/edtValue2"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="@string/value_2_or_height"
-                android:textSize="14sp"
-                android:inputType="numberDecimal"
+                android:layout_height="48dp"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="20dp"
                 android:background="@drawable/edt_bg"
-                android:fontFamily="@font/poppins_regular"/>
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/value_2_or_height"
+                android:inputType="numberDecimal"
+                android:paddingLeft="20dp"
+                android:textSize="14sp" />
 
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
